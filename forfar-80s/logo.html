@@ -26,12 +26,12 @@
     <mask id="slatMask"><rect width="1080" height="1080" fill="url(#slats)"/></mask>
     <g id="sun">
       <!-- retro sunset bands, gaps grow toward the base -->
-      <rect x="280" y="120" width="520" height="92"  fill="#FFE14D"/>
-      <rect x="280" y="218" width="520" height="62"  fill="#FFC22E"/>
-      <rect x="280" y="288" width="520" height="48"  fill="#FF8F1F"/>
-      <rect x="280" y="346" width="520" height="38"  fill="#FF5A26"/>
-      <rect x="280" y="396" width="520" height="28"  fill="#E8303F"/>
-      <rect x="280" y="438" width="520" height="18"  fill="#C21C62"/>
+      <rect x="280" y="120" width="520" height="92"  fill="#C8F26B"/>
+      <rect x="280" y="218" width="520" height="62"  fill="#8FDB4A"/>
+      <rect x="280" y="288" width="520" height="48"  fill="#4CBF3A"/>
+      <rect x="280" y="346" width="520" height="38"  fill="#25A03C"/>
+      <rect x="280" y="396" width="520" height="28"  fill="#138A3E"/>
+      <rect x="280" y="438" width="520" height="18"  fill="#0B6B35"/>
     </g>
     <g id="truss" fill="none" stroke-linejoin="round" stroke-linecap="round">
       <polygon points="540,120 790,470 290,470" stroke-width="18"/>
@@ -53,19 +53,19 @@
 
   <!-- WORDMARK: green slatted echoes (nod to the original brand colours) -->
   <g mask="url(#slatMask)" filter="url(#soft)">
-    <use href="#word" fill="#1E40AF" transform="translate(0,66)"/>
-    <use href="#word" fill="#0EA5A4" transform="translate(0,44)"/>
-    <use href="#word" fill="#22C55E" transform="translate(0,22)"/>
+    <use href="#word" fill="#0A4D2A" transform="translate(0,66)"/>
+    <use href="#word" fill="#138A3E" transform="translate(0,44)"/>
+    <use href="#word" fill="#3CC24A" transform="translate(0,22)"/>
   </g>
   <g class="glow" opacity=".6" filter="url(#blur)"><use href="#word" fill="#fff"/></g>
   <!-- slight chromatic fringe -->
-  <g class="glow" opacity=".35"><use href="#word" fill="#ff2a55" transform="translate(-3,0)"/><use href="#word" fill="#29e6ff" transform="translate(3,0)"/></g>
+  <g class="glow" opacity=".35"><use href="#word" fill="#3CC24A" transform="translate(-3,0)"/><use href="#word" fill="#ffffff" transform="translate(3,0)"/></g>
   <use href="#word" fill="#FFF8EC" filter="url(#soft)"/>
 
   <!-- SUBLINES -->
   <g font-family="Archivo" text-anchor="middle" filter="url(#soft)">
     <text x="540" y="842" font-size="50" font-weight="800" letter-spacing="15" fill="#FFF8EC">ROOF TRUSS CO.</text>
-    <g fill="#FFB52E">
+    <g fill="#5FD35A">
       <rect x="300" y="880" width="120" height="6"/><rect x="660" y="880" width="120" height="6"/>
       <text x="540" y="896" font-size="32" font-weight="700" letter-spacing="9">EST. 1993</text>
     </g>
