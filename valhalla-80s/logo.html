@@ -1,0 +1,85 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=block" rel="stylesheet">
+<style>
+  html,body{margin:0;background:#000}
+  #stage{position:relative;width:1080px;height:1080px;overflow:hidden;background:radial-gradient(ellipse at 50% 40%,#16120a 0%,#070604 60%,#000 100%)}
+  svg{position:absolute;inset:0}
+  .crt #scan{position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(0,0,0,.28) 0 2px,rgba(255,255,255,.02) 2px 4px)}
+  .crt #vig{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.75) 100%)}
+  .clean #scan,.clean #vig,.clean .glow{display:none}
+</style></head>
+<body class="crt"><div id="stage">
+<svg viewBox="0 0 1080 1080" width="1080" height="1080">
+<defs>
+  <filter id="blur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="14"/></filter>
+  <filter id="soft"><feGaussianBlur stdDeviation="1"/></filter>
+  <!-- Mjolnir silhouette: ring, handle, flared head -->
+  <path id="hammer" d="M540,108 a42,42 0 1 1 -0.1,0 z M540,135 a15,15 0 1 0 0.1,0 z
+     M506,190 h68 v130 h-68 z
+     M430,318 h220 q20,0 34,16 l110,160 q24,36 -6,70 q-20,22 -40,10 q-20,-12 -40,-4 q-60,24 -168,24 q-108,0 -168,-24 q-20,-8 -40,4 q-20,12 -40,-10 q-30,-34 -6,-70 l110,-160 q14,-16 34,-16 z" fill-rule="evenodd"/>
+  <clipPath id="hc"><use href="#hammer"/></clipPath>
+  <g id="bands">
+    <rect x="250" y="90"  width="580" height="170" fill="#FFF3B0"/>
+    <rect x="250" y="268" width="580" height="92"  fill="#FFD84D"/>
+    <rect x="250" y="370" width="580" height="70"  fill="#F5B82E"/>
+    <rect x="250" y="450" width="580" height="50"  fill="#E0952A"/>
+    <rect x="250" y="510" width="580" height="38"  fill="#B8701E"/>
+    <rect x="250" y="558" width="580" height="62"  fill="#8A4F14"/>
+  </g>
+  <!-- bold Norse V -->
+  <polygon id="vee" points="452,352 520,352 540,452 560,352 628,352 570,566 510,566"/>
+  <!-- Algiz rune -->
+  <path id="algiz" d="M0,-34 V34 M0,-6 L-22,-34 M0,-6 L22,-34" fill="none" stroke-width="9" stroke-linecap="square"/>
+  <linearGradient id="chrome" gradientUnits="userSpaceOnUse" x1="0" y1="680" x2="0" y2="800">
+    <stop offset="0" stop-color="#FFFBE6"/><stop offset=".42" stop-color="#FFD84D"/>
+    <stop offset=".5" stop-color="#5A2F08"/><stop offset=".56" stop-color="#B8701E"/>
+    <stop offset="1" stop-color="#FFE08A"/></linearGradient>
+  <pattern id="slats" width="10" height="12" patternUnits="userSpaceOnUse"><rect width="10" height="8" fill="#fff"/></pattern>
+  <mask id="slatMask"><rect width="1080" height="1080" fill="url(#slats)"/></mask>
+  <g id="word"><text x="540" y="800" text-anchor="middle" font-family="'Archivo Black'" font-size="150" letter-spacing="-2" transform="skewX(-8) translate(108,0)">VALHALLA</text></g>
+  <linearGradient id="gridFade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".9"/></linearGradient>
+  <mask id="gm"><rect y="995" width="1080" height="85" fill="url(#gridFade)"/></mask>
+</defs>
+
+<!-- synthwave floor -->
+<g mask="url(#gm)" stroke="#E0952A" stroke-width="2" opacity=".55">
+  <line x1="0" y1="1000" x2="1080" y2="1000"/><line x1="0" y1="1010" x2="1080" y2="1010"/><line x1="0" y1="1024" x2="1080" y2="1024"/><line x1="0" y1="1044" x2="1080" y2="1044"/><line x1="0" y1="1072" x2="1080" y2="1072"/>
+  <g id="rays"></g>
+</g>
+
+<!-- ICON -->
+<g class="glow" opacity=".5" filter="url(#blur)"><g clip-path="url(#hc)"><use href="#bands"/></g></g>
+<g filter="url(#soft)">
+  <g clip-path="url(#hc)"><use href="#bands"/></g>
+  <use href="#hammer" fill="none" stroke="#FFF8E1" stroke-width="7" stroke-linejoin="round"/>
+  <g stroke="#0A0805" stroke-width="5"><line x1="506" y1="236" x2="574" y2="236"/><line x1="506" y1="262" x2="574" y2="262"/><line x1="506" y1="288" x2="574" y2="288"/></g>
+  <use href="#vee" fill="#0A0805" stroke="#0A0805" stroke-width="26" stroke-linejoin="round"/>
+  <use href="#vee" fill="#0A0805" stroke="#FFF8E1" stroke-width="8" stroke-linejoin="round"/>
+</g>
+
+<!-- WORDMARK with striped echoes -->
+<g mask="url(#slatMask)" filter="url(#soft)">
+  <use href="#word" fill="#5A2F08" transform="translate(0,60)"/>
+  <use href="#word" fill="#B8701E" transform="translate(0,40)"/>
+  <use href="#word" fill="#F5B82E" transform="translate(0,20)"/>
+</g>
+<g class="glow" opacity=".55" filter="url(#blur)"><use href="#word" fill="#FFD84D"/></g>
+<use href="#word" fill="url(#chrome)" stroke="#FFF8E1" stroke-width="2.5" filter="url(#soft)"/>
+
+<!-- WLC + runes -->
+<g filter="url(#soft)">
+  <use href="#algiz" stroke="#F5B82E" transform="translate(395,950)"/>
+  <text x="552" y="976" text-anchor="middle" font-family="'Archivo Black'" font-size="72" letter-spacing="24" fill="#FFF8E1">WLC</text>
+  <use href="#algiz" stroke="#F5B82E" transform="translate(712,950)"/>
+</g>
+</svg>
+<div id="scan"></div><div id="vig"></div>
+</div>
+<script>
+  // perspective floor rays
+  const g=document.getElementById('rays');let s='';
+  for(let i=-10;i<=10;i++){s+=`<line x1="${540+i*30}" y1="1000" x2="${540+i*160}" y2="1080"/>`}
+  g.innerHTML=s;
+</script>
+</body></html>
